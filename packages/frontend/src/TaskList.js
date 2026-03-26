@@ -27,6 +27,12 @@ function TaskList({ onEdit }) {
     });
   };
 
+  const PRIORITY_STYLES = {
+    P1: { background: 'linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%)', label: 'P1' },
+    P2: { background: 'linear-gradient(135deg, #ff9800 0%, #e65100 100%)', label: 'P2' },
+    P3: { background: 'linear-gradient(135deg, #1976d2 0%, #0d47a1 100%)', label: 'P3' },
+  };
+
   const fetchTasks = async () => {
     try {
       setLoading(true);
@@ -220,6 +226,18 @@ function TaskList({ onEdit }) {
                   }}
                 />
               )}
+              <Chip
+                label={(PRIORITY_STYLES[task.priority] || PRIORITY_STYLES['P3']).label}
+                size="small"
+                sx={{
+                  height: 20,
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  background: (PRIORITY_STYLES[task.priority] || PRIORITY_STYLES['P3']).background,
+                  color: 'white',
+                  minWidth: 28,
+                }}
+              />
               <Box 
                 sx={{ 
                   display: 'flex', 
